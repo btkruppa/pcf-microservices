@@ -1,0 +1,14 @@
+server:
+  port: 2223
+  
+spring:
+  application:
+    name: account-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: https://eureka-b9ec69ea-70fb-4de2-afe5-2caf45ca2480.cfapps.io
+  instance:
+    lease-expiration-duration-in-seconds: 2
+    lease-renewal-interval-in-seconds: 1
