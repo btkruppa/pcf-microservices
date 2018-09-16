@@ -1,14 +1,40 @@
 server:
-  port: 2223
+  port: 3333
   
 spring:
   application:
     name: account-service
+  cloud:
+    services:
+      registrationMethod: route
+  profiles:
+    active:
+    - ${ACCOUNT_PROFILE:dev}
+    
+feign:
+  hystrix: 
+    enabled: true
+   
+security:
+  basic:
+    enabled: false
+
+eureka:
+  client:
+    enabled: true
+---
+spring:
+ profiles: dev
 
 eureka:
   client:
     service-url:
-      defaultZone: https://eureka-b9ec69ea-70fb-4de2-afe5-2caf45ca2480.cfapps.io
+      defaultZone: http://localhost:8761/eureka
   instance:
     lease-expiration-duration-in-seconds: 2
     lease-renewal-interval-in-seconds: 1
+
+    
+---
+spring:
+  profiles: dev-pcf

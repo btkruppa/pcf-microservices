@@ -25,6 +25,7 @@ public class AccountController {
 
 	@GetMapping
 	public List<Account> findAll() {
+    System.out.println("test-again");
 		return accounts;
 	}
 

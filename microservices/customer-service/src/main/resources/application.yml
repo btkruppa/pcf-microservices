@@ -7,15 +7,31 @@ spring:
   cloud:
     services:
       registrationMethod: route
+  profiles:
+    active:
+    - ${CUSTOMER_PROFILE:dev}
     
 feign:
   hystrix: 
     enabled: true
-    
----
-spring:
-  profiles: dev
 
 security:
   basic:
     enabled: false
+   
+---
+spring:
+ profiles: dev
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 2
+    lease-renewal-interval-in-seconds: 1
+
+    
+---
+spring:
+  profiles: dev-pcf

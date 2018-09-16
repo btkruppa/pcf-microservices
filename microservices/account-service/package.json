@@ -1,0 +1,21 @@
+{
+  "name": "account-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main/java/com/revature/Application.java",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -V --exec \"mvn clean package & java -jar target/account-service.jar\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "../*.*"
+    ],
+    "verbose": true
+  }
+}
