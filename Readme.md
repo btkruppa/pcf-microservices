@@ -6,8 +6,8 @@ Apparently don't use Edgeware.RELEASE for your gateway service. It will connect 
 
 # Status of this Repo
 ## Currently Working
-The account service will deploy and connect to the provided Service Registry on pcf.
-The gateway service will deploy and connect to the provided Service Registry on pcf and will route to the account service.
+* The account service will deploy and connect to the provided Service Registry on pcf.
+* The gateway service will deploy and connect to the provided Service Registry on pcf and will route to the account service.
 
 ## ToDo
 * Haven't tried the customer service but it should work fine.
