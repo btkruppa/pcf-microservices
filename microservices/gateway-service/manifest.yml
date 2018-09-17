@@ -1,11 +1,11 @@
 ---
 applications:
-- name: account-service
+- name: gateway-service
   memory: 1G
   instances: 1
-  path: target/account-service.jar
+  path: target/gateway-service.jar
   random-route: true
   services:
     - my-service-registry
   env:
-    ACCOUNT_PROFILE: dev-pcf
+    GATEWAY_PROFILE: dev-pcf

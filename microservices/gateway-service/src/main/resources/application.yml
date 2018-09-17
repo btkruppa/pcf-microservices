@@ -4,7 +4,9 @@ server:
 spring:
   application:
     name: gateway-server
-    
+  profiles:
+    active:
+    - ${GATEWAY_PROFILE:dev}
 info:
   component: Edge Server
  
@@ -16,15 +18,63 @@ zuul:
     customer:
       path: /customers/**
       serviceId: customer-service
+      
+endpoints:
+  routes:
+    sensitive: false
+      
+ribbon: 
+  eureka:
+    enabled: true
+  ConnectTimeout: 30000
+  ReadTimeout: 10000
+  maxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+    
+security:
+  basic:
+    enabled: false
+    
+management:
+  security:
+    enabled: false
+    
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+
+---
+spring:
+ profiles: dev
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
-      
-logging:
-  level:
-    root: ERROR
-    org.springframework.web: ERROR
-    org.hibernate: ERROR
+
     
+---
+spring:
+  profiles: dev-pcf
+  
+#disable registering with eureka when running locally    
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+ribbon: 
+  eureka:
+    enabled: true
+  ConnectTimeout: 30000
+  ReadTimeout: 10000
+  maxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  IsSecured: true
+

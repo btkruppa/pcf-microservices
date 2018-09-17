@@ -1,6 +1,21 @@
 # Problems I faced
 ## Connecting to the Eureka Service provided by PCF
-I had some issues here where I could not get it to connect ... And then I found out there was a different dependency that I needed to include that is not the normal eureka dependency
+I had some issues here where I could not get it to connect ... And then I found out there was a different dependency that I needed to include that is not the normal eureka dependency  
+## Communicating with Account Service from Zuul
+Apparently don't use Edgeware.RELEASE for your gateway service. It will connect to the Service Registry but then will not properly forward the requests to the account service ... something to do with HTTPS in that version.
+
+# Status of this Repo
+## Currently Working
+The account service will deploy and connect to the provided Service Registry on pcf.
+The gateway service will deploy and connect to the provided Service Registry on pcf and will route to the account service.
+
+## ToDo
+* Haven't tried the customer service but it should work fine.
+* Clean up gateway service application.yml since I tried multiple things trying to get it to work that I don't believe I need.
+* Example with the RabbitMQ instance provided by PCF
+* Step by step notes
+* Add more notes for studying
+
 
 # Study
 ## What is cloud Foundry?
